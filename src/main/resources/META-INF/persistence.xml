@@ -3,15 +3,16 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="employee_details">
-        <class>mindswap.jpa.entity.AddressEntity</class>
-        <class>mindswap.jpa.entity.EmployeeEntity</class>
-        <class>mindswap.jpa.entity.CompanyEntity</class>
+    <persistence-unit name="spl_details">
+        <class>spl.entity.BikesEntity</class>
+        <class>spl.entity.VehiclesEntity</class>
+        <class>spl.entity.TeachersEntity</class>
+
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/school_parking_lot"/>
             <property name="hibernate.connection.user" value="root"/>
-            <property name="hibernate.connection.password" value="secret"/>
+            <property name="hibernate.connection.password" value="12345"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
