@@ -1,3 +1,4 @@
+import spl.entity.SpotsEntity;
 import spl.entity.TeachersEntity;
 import spl.entity.VehiclesEntity;
 
@@ -51,6 +52,28 @@ public class Main {
         em.getTransaction().commit();
         System.out.println("-".repeat(50));
 
+        //Insert Spot
+        System.out.println("Insert new Spots");
+        em.getTransaction().begin();
+        SpotsEntity s1 = new SpotsEntity();
+        SpotsEntity s2 = new SpotsEntity();
+        SpotsEntity s3 = new SpotsEntity();
+        SpotsEntity s4 = new SpotsEntity();
+        SpotsEntity s5 = new SpotsEntity();
+        s1.setName("A1");
+        s1.setVehicles(v1);
+        s2.setName("A2");
+        s3.setName("A3");
+        s4.setName("A4");
+        s5.setName("B1");
+        em.persist(s1);
+        em.persist(s2);
+        em.persist(s3);
+        em.persist(s4);
+        em.persist(s5);
+        em.getTransaction().commit();
+        System.out.println("-".repeat(50));
+
         //Get all the Teachers again
         System.out.println("Print all Teachers ");
         em.getTransaction().begin();
@@ -81,6 +104,29 @@ public class Main {
         em.getTransaction().commit();
         System.out.println("-".repeat(50));
 
+        //Find a Vehicle in a spot
+        System.out.println("Find a vehicle in a spot");
+        em.getTransaction().begin();
+        SpotsEntity spots = em.createQuery("SELECT e FROM Spots e WHERE e.id = :id", SpotsEntity.class)
+                .setParameter("id", 5)
+                .setMaxResults(3)
+                .getSingleResult();
+
+        spots.print();
+        em.getTransaction().commit();
+        System.out.println("-".repeat(50));
+
+        //Find a Vehicle in a spot
+        System.out.println("Find a vehicle in a spot");
+        em.getTransaction().begin();
+        spots = em.createQuery("SELECT e FROM Spots e WHERE e.id = :id", SpotsEntity.class)
+                .setParameter("id", 7)
+                .setMaxResults(3)
+                .getSingleResult();
+
+        spots.print();
+        em.getTransaction().commit();
+        System.out.println("-".repeat(50));
 
         emf.close();
         em.close();
