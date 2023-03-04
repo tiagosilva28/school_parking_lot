@@ -10,12 +10,7 @@ public class TeachersEntity extends Person{
     private int age;
 
     @ManyToMany(mappedBy = "teachers", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER) // for many to many
-    private List<VehiclesEntity> cars = new ArrayList<>();
-
-    /*
-    @ManyToMany(mappedBy = "teachers", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER) // for many to many
-    private List<BikesEntity> bikes = new ArrayList<>();
-    */
+    private List<VehiclesEntity> vehicles = new ArrayList<>();
 
     public TeachersEntity() {
         super();
@@ -26,18 +21,34 @@ public class TeachersEntity extends Person{
         this.age = age;
     }
 
-    public List<VehiclesEntity> getcars() {
-        return cars;
+    public List<VehiclesEntity> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<VehiclesEntity> vehicles) {
+        this.vehicles = vehicles;
+        this.vehicles.forEach(c -> c.getTeachers().add(this));
+    }
+
+    public void setVehicle(VehiclesEntity vehicle) {
+        this.vehicles.add(vehicle);
+        vehicle.getTeachers().add(this);
     }
 
     public void print() {
+        String vehicleName = "[";
+        for (VehiclesEntity vehicle : vehicles) {
+            vehicleName += vehicle.getType() + ": ";
+            vehicleName += vehicle.getBrand() + " ";
+            vehicleName += vehicle.getModel() + ", ";
+            vehicleName += vehicle.getLicense_plate() + "]";
+        }
 
         System.out.println("TeachersEntity{" +
                 "id=" + getPersonId() +
                 ", name='" + getName() + '\'' +
                 ", age=" + age +
-                ", cars=" + cars +
-                ", bikes=" +
+                ", vehicles=" + vehicleName +
                 '}');
     }
 }
