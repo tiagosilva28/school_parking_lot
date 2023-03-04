@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity // To create a Entity
+@Entity (name = "Teachers") // To create a Entity
 public class TeachersEntity extends Person{
 
     private int age;

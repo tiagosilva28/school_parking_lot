@@ -25,7 +25,7 @@ public class Main {
         //Get all the Teachers
         System.out.println("Print all Teachers");
         em.getTransaction().begin();
-        em.createQuery("SELECT e FROM TeachersEntity e", TeachersEntity.class)
+        em.createQuery("SELECT e FROM Teachers e", TeachersEntity.class)
                 .getResultList()
                 .forEach(TeachersEntity::print);
         em.getTransaction().commit();
@@ -54,7 +54,7 @@ public class Main {
         //Get all the Teachers again
         System.out.println("Print all Teachers ");
         em.getTransaction().begin();
-        em.createQuery("SELECT e FROM TeachersEntity e", TeachersEntity.class)
+        em.createQuery("SELECT e FROM Teachers e", TeachersEntity.class)
                 .getResultList()
                 .forEach(TeachersEntity::print);
         em.getTransaction().commit();
@@ -63,7 +63,7 @@ public class Main {
         //Get all the Vehicles
         System.out.println("Print all Vehicles ");
         em.getTransaction().begin();
-        em.createQuery("SELECT e FROM VehiclesEntity e", VehiclesEntity.class)
+        em.createQuery("SELECT e FROM Vehicles e", VehiclesEntity.class)
                 .getResultList()
                 .forEach(VehiclesEntity::print);
         em.getTransaction().commit();
@@ -72,7 +72,7 @@ public class Main {
         //Find the owner of a Vehicle
         System.out.println("Find the owner of a Vehicle");
         em.getTransaction().begin();
-        VehiclesEntity vehicles = em.createQuery("SELECT e FROM VehiclesEntity e WHERE e.id = :id", VehiclesEntity.class)
+        VehiclesEntity vehicles = em.createQuery("SELECT e FROM Vehicles e WHERE e.id = :id", VehiclesEntity.class)
               .setParameter("id", 4)
               .setMaxResults(3)
               .getSingleResult();
@@ -80,7 +80,6 @@ public class Main {
         vehicles.getTeachers().forEach(TeachersEntity::print);
         em.getTransaction().commit();
         System.out.println("-".repeat(50));
-
 
 
         emf.close();

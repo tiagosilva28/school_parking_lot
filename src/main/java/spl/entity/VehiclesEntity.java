@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity // To create a Entity
+@Entity (name = "Vehicles") // To create a Entity
 public class VehiclesEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
