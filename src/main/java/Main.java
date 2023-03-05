@@ -96,7 +96,7 @@ public class Main {
         System.out.println("Find the owner of a Vehicle");
         em.getTransaction().begin();
         VehiclesEntity vehicles = em.createQuery("SELECT e FROM Vehicles e WHERE e.id = :id", VehiclesEntity.class)
-              .setParameter("id", 4)
+              .setParameter("id", 1)
               .setMaxResults(3)
               .getSingleResult();
 
@@ -108,7 +108,7 @@ public class Main {
         System.out.println("Find a vehicle in a spot");
         em.getTransaction().begin();
         SpotsEntity spots = em.createQuery("SELECT e FROM Spots e WHERE e.id = :id", SpotsEntity.class)
-                .setParameter("id", 5)
+                .setParameter("id", 1)
                 .setMaxResults(3)
                 .getSingleResult();
 
@@ -120,7 +120,7 @@ public class Main {
         System.out.println("Find a vehicle in a spot");
         em.getTransaction().begin();
         spots = em.createQuery("SELECT e FROM Spots e WHERE e.id = :id", SpotsEntity.class)
-                .setParameter("id", 7)
+                .setParameter("id", 2)
                 .setMaxResults(3)
                 .getSingleResult();
 

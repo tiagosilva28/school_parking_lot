@@ -7,7 +7,7 @@ import java.util.List;
 @Entity (name = "Vehicles") // To create a Entity
 public class VehiclesEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     private String brand;
